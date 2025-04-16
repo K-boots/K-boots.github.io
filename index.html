@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Cuts Barbershop</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+        
+        nav {
+            background-color: #34495e;
+            padding: 1rem 0;
+        }
+        
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #e74c3c;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/500');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #c0392b;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+        
+        .services {
+            background-color: white;
+            padding: 3rem 0;
+        }
+        
+        .price-list {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+        
+        .price-list th, .price-list td {
+            padding: 1rem;
+            text-align: left;
+        }
+        
+        .price-list th {
+            background-color: #34495e;
+            color: white;
+        }
+        
+        .price-list tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .price-list tr:hover {
+            background-color: #e8e8e8;
+        }
+        
+        .about {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        
+        .about-text {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .about-text h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .team {
+            background-color: white;
+            padding: 3rem 0;
+        }
+        
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 250px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .team-member img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .team-member-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .team-member-name {
+            margin: 0 0 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .team-member-title {
+            color: #7f8c8d;
+            margin: 0;
+        }
+        
+        .contact {
+            background-color: #2c3e50;
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #e74c3c;
+        }
+        
+        .submit-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-button:hover {
+            background-color: #c0392b;
+        }
+        
+        .hours-location {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .hours, .location {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        footer {
+            background-color: #34495e;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .social-icons {
+            margin-bottom: 1rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            text-decoration: none;
+        }
+        
+        .copyright {
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about {
+                flex-direction: column;
+            }
+            
+            .about-image, .about-text {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Classic Cuts</div>
+        <div class="tagline">Where Style Meets Tradition</div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <section id="home" class="hero">
+        <h1>Premium Barber Services</h1>
+        <p>Classic styles, modern techniques, and exceptional service. Experience the difference at Classic Cuts Barbershop.</p>
+        <a href="#contact" class="cta-button">Book an Appointment</a>
+    </section>
+    
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services & Pricing</h2>
+            
+            <table class="price-list">
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Classic Haircut</td>
+                        <td>Precision cut with clippers and scissors</td>
+                        <td>$28</td>
+                    </tr>
+                    <tr>
+                        <td>Beard Trim</td>
+                        <td>Shape and define your beard</td>
+                        <td>$15</td>
+                    </tr>
+                    <tr>
+                        <td>Haircut & Beard Combo</td>
+                        <td>The complete package for hair and facial hair</td>
+                        <td>$40</td>
+                    </tr>
+                    <tr>
+                        <td>Hot Towel Shave</td>
+                        <td>Traditional straight razor shave with hot towel</td>
+                        <td>$35</td>
+                    </tr>
+                    <tr>
+                        <td>Senior's Haircut</td>
+                        <td>For gentlemen 65 and older</td>
+                        <td>$22</td>
+                    </tr>
+                    <tr>
+                        <td>Kid's Haircut</td>
+                        <td>For boys 12 and under</td>
+                        <td>$20</td>
+                    </tr>
+                    <tr>
+                        <td>Head Shave</td>
+                        <td>Clean head shave with razor</td>
+                        <td>$30</td>
+                    </tr>
+                    <tr>
+                        <td>Hair Color</td>
+                        <td>Professional color application</td>
+                        <td>$50+</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+    <section id="about" class="container">
+        <h2 class="section-title">About Us</h2>
+        
+        <div class="about">
+            <div class="about-image">
+                <img src="/api/placeholder/600/400" alt="Barbershop interior">
+            </div>
+            <div class="about-text">
+                <h2>A Legacy of Excellence</h2>
+                <p>Established in 2010, Classic Cuts has been providing premier barbering services to our community for over a decade. Our shop combines traditional techniques with modern styles to deliver exceptional results for every client.</p>
+                <p>Our team of skilled barbers takes pride in their craft, ensuring every haircut, beard trim, and shave meets our high standards of quality. We're committed to creating a welcoming atmosphere where clients can relax and enjoy the experience.</p>
+                <p>At Classic Cuts, we believe that a great haircut is more than just a service—it's an experience. That's why we focus on personalized attention, quality products, and impeccable technique in everything we do.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="team" class="team">
+        <div class="container">
+            <h2 class="section-title">Meet Our Team</h2>
+            
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="/api/placeholder/250/250" alt="Barber James">
+                    <div class="team-member-info">
+                        <h3 class="team-member-name">James Wilson</h3>
+                        <p class="team-member-title">Master Barber & Owner</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <img src="/api/placeholder/250/250" alt="Barber Michael">
+                    <div class="team-member-info">
+                        <h3 class="team-member-name">Michael Rodriguez</h3>
+                        <p class="team-member-title">Senior Barber</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <img src="/api/placeholder/250/250" alt="Barber Sarah">
+                    <div class="team-member-info">
+                        <h3 class="team-member-name">Sarah Johnson</h3>
+                        <p class="team-member-title">Barber & Colorist</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <img src="/api/placeholder/250/250" alt="Barber David">
+                    <div class="team-member-info">
+                        <h3 class="team-member-name">David Kim</h3>
+                        <p class="team-member-title">Junior Barber</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Phone</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="service">Preferred Service</label>
+                        <select id="service" class="form-control" required>
+                            <option value="">Select a service</option>
+                            <option value="haircut">Classic Haircut</option>
+                            <option value="beard">Beard Trim</option>
+                            <option value="combo">Haircut & Beard Combo</option>
+                            <option value="shave">Hot Towel Shave</option>
+                            <option value="senior">Senior's Haircut</option>
+                            <option value="kids">Kid's Haircut</option>
+                            <option value="head">Head Shave</option>
+                            <option value="color">Hair Color</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="date">Preferred Date</label>
+                        <input type="date" id="date" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="time">Preferred Time</label>
+                        <input type="time" id="time" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="message">Special Requests</label>
+                        <textarea id="message" class="form-control" rows="4"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Book Appointment</button>
+                </form>
+            </div>
+            
+            <div class="hours-location">
+                <div class="hours">
+                    <h3>Business Hours</h3>
+                    <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
+                    <p>Saturday: 8:00 AM - 6:00 PM</p>
+                    <p>Sunday: 10:00 AM - 4:00 PM</p>
+                    <p>Phone: (555) 123-4567</p>
+                    <p>Email: info@classiccuts.com</p>
+                </div>
+                
+                <div class="location">
+                    <h3>Location</h3>
+                    <p>123 Main Street<br>Anytown, ST 12345</p>
+                    <p>Free parking available behind the shop</p>
+                    <p>Public transit: Bus routes 10, 15, and 22 stop nearby</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Classic Cuts Barbershop. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
